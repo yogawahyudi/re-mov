@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Home from './pages/Home'
+import { Routes, Route, useNavigate } from "react-router-dom";
+import MovieDetail from "./pages/MovieDetail";
+
 import './App.css';
 
 function App() {
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = "/search";
+    navigate(path);
+  }
+
+const [query, setquery] = useState("");
+const search = (query) => {
+
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+          <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+          {/* <Route path="/search" element={<Search />} /> */}
+
+      </Routes>
+  </>
   );
 }
+
+
+
 
 export default App;
